@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/* || RESETS */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* || VARIABLES */
+:root{
+    /* FONT */
+    --FF: 'Nunito', sans-serif;
+    --FS: 2rem;
+
+    /* COLORS */
+    --FONT-COLOR: whitesmoke;
+    --BGCOLOR: whitesmoke;
+    --HEADING-BGCOLOR: rgb(19, 19, 203);
+    --PLAYER: rgb(9, 100, 48);
+    --BORDER-COLOR: #000;
+    --HOVER-COLOR: rgb(125, 32, 146);
+    --SHADOW-COLOR1: #000;
+    --SHADOW-COLOR2: #000;
+    --SHADOW: inset 0.2px 0.2px 0.5px var(--SHADOW-COLOR1), 
+    2px 2px 10px var(--SHADOW-COLOR1);
+    --SHADOW2: inset 0.2px 0.2px 0.5px var(--SHADOW-COLOR2), 
+    2px 2px 10px var(--SHADOW-COLOR2); 
+
+    /* IMAGE */
+    --BACKGROUND: url(images/background.jpg);
+
+    /* PADDING */
+    --PADDING: 0.5rem;
+    --HEADER-PADDING: 0.25rem 0.5rem;
+
+    /* BORDER */
+    --BORDER: 2px solid var(--BORDER-COLOR);
+    --BORDER-RADIUS: 15px;
+    --BORDER-PADDING: 0.5rem;
+}
+
+.darkmode{
+    /* COLORS */
+    --BGCOLOR: #000;
+    --BORDER-COLOR: rgb(167, 163, 163);
+    --HOVER-COLOR: #000;
+    --HEADING-BGCOLOR: #151515;
+    --PLAYER: #333;
+    --SHADOW-COLOR1: #545454;
+    --SHADOW-COLOR2: #00adb5;
+    --SHADOW: inset 0.5px 0.5px 1px var(--SHADOW-COLOR1),     2px 2px 5px var(--SHADOW-COLOR1);
+    --SHADOW2: inset 0.5px 0.5px 1px var(--SHADOW-COLOR2),     2px 2px 5px var(--SHADOW-COLOR2);
+    
+    --BORDER: 1px solid var(--BORDER-COLOR);
+    --BACKGROUND: linear-gradient(rgb(0,0,0,0.5), rgb(0,0,0,0.5)), url(images/background.jpg);
+}
+
+html, body{
+    width: 100%;
+    font-family: var(--FF);
+    color: var(--FONT-COLOR);
+}
+/* || HEADERS */
+
+.header{
+    width: 100%;
+    height: 60px;
+    padding: var(--HEADER-PADDING);
+    padding-left: 0;
+    background-color: var(--BGCOLOR);
+}
+.header__nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__nav__img__light, .light_mode{
+    display:none;
+}
+
+.darkmode .header__nav__img__dark, .darkmode .dark_mode{
+    display:none;
+}
+.darkmode .header__nav__img__light, .darkmode .light_mode{
+    display: block;
+}
+#mode{
+    cursor: pointer;
+}
+
+/* || MAIN */
+
+.main{
+    background: var(--BACKGROUND);
+    background-size: cover;
+    height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game{
+    width: 50%;
+    height: 80%;
+    backdrop-filter: blur(10px);
+    border-radius: var(--BORDER-RADIUS);
+    box-shadow: var(--SHADOW);
+    padding: var(--PADDING);
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: space-around;
+}
+
+.game__choice{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game__score{
+    border: var(--BORDER);
+    border-radius: var(--BORDER-RADIUS);
+    box-shadow: var(--SHADOW);
+}
+.user, .comp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: var(--PADDING);
+}
+.user{
+    border-bottom: var(--BORDER);
+    border-radius: var(--BORDER-RADIUS);
+}
+
+.user h3, .comp h3{
+    text-transform: uppercase;
+    padding: var(--HEADER-PADDING);
+    background-color: var(--PLAYER);
+    border-radius: var(--BORDER-RADIUS);
+    box-shadow: var(--SHADOW);
+}
+.result{
+    width: 230px;
+    height: 60px;
+    margin: 0 auto;
+    background-color: var(--HEADING-BGCOLOR);
+    border: var(--BORDER);
+    border-radius: var(--BORDER-RADIUS);
+    box-shadow: var(--SHADOW);
+    justify-content: center;
+}
+
+.result h2{
+    font-size : var(--FS);
+    text-transform: uppercase;
+}
+.game__choice__player img{
+    transform: rotate(90deg);
+    filter: drop-shadow(var(--SHADOW));
+}
+
+.game__choice__computer img{
+    transform: rotate(-90deg) rotateY(180deg);
+    filter: drop-shadow(var(--SHADOW));
+}
+
+.hand_animation1{
+    animation: shake1 0.5s ease-in-out forwards 3;
+}
+
+@keyframes shake1{
+    from{
+        transform: rotate(90deg) translate(0px);
+    }
+    25%{
+        transform: rotate(90deg) translate(20px);
+    }
+    50%{
+        transform: rotate(90deg) translate(-20px);
+    }
+    75%{
+        transform: rotate(90deg) translate(20px);
+    }
+    to{
+        transform: rotate(90deg) translate(0);
+    }
+}
+
+.hand_animation2{
+    animation: shake2 0.5s ease-in-out forwards 3;
+}
+
+@keyframes shake2{
+    from{
+        transform: rotate(-90deg) rotateY(180deg) translate(0px);
+    }
+    25%{
+        transform: rotate(-90deg) rotateY(180deg) translate(20px);
+    }
+    50%{
+        transform: rotate(-90deg) rotateY(180deg) translate(-20px);
+    }
+    75%{
+        transform: rotate(-90deg) rotateY(180deg) translate(20px);
+    }
+    to{
+        transform: rotate(-90deg) rotateY(180deg) translate(0);
+    }
+}
+.options{
+    justify-content: center;
+    gap: 2rem;
+}
+
+.option{
+    border: var(--BORDER);
+    border-radius: var(--BORDER-RADIUS);
+    box-shadow: var(--SHADOW);
+    padding: var(--BORDER-PADDING);
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.options img{
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.options img:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.option:hover{
+    background-color: var(--HOVER-COLOR);
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 800px){
+    .game{
+        width: 100%;
+    }
+    .game__choice__player img, .game__choice__computer img{
+        width: 140px;
+        height: auto;
+    }
+    .option img{
+        width: 70px;
+        height: auto;
+    }
+}
+
